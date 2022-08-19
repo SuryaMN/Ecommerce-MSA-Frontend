@@ -1,0 +1,5 @@
+{
+    "ATLAS_URI" : "mongodb+srv://suryamn:suryamn@cluster0.db9ixvw.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret":"jwt_stackoverflow"
+
+}
