@@ -19,18 +19,27 @@ router.post("/", (req, res) => {
     if (!result) return res.status(200).json({ msg: "User Doesn't Exist" });
     else {
       if (result.password === user.password) {
-        jwt.sign({ id: result.id }, config.get("jwtSecret"), (err, token) => {
-          if (err) throw err;
+        jwt.sign(
+          {
+            id: result.id,
+            username: result.username,
+            iat: new Date().getTime(),
+            expiresIn: "600s",
+          },
+          config.get("jwtSecret"),
+          (err, token) => {
+            if (err) throw err;
 
-          res.status(200).json({
-            msg: "Logged in",
-            token,
-            logged_user: {
-              id: result.id,
-              username: result.username,
-            },
-          });
-        });
+            res.status(200).json({
+              msg: "Logged in",
+              token,
+              logged_user: {
+                id: result.id,
+                username: result.username,
+              },
+            });
+          }
+        );
       } else
         res
           .status(200)

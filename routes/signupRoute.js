@@ -20,18 +20,27 @@ router.post("/", (req, res) => {
       user.save((err, user) => {
         if (err) throw err;
         else {
-          jwt.sign({ id: user.id }, config.get("jwtSecret"), (err, token) => {
-            if (err) throw err;
+          jwt.sign(
+            {
+              id: user.id,
+              username: user.username,
+              iat: new Date().getTime(),
+              expiresIn: "600s",
+            },
+            config.get("jwtSecret"),
+            (err, token) => {
+              if (err) throw err;
 
-            res.status(200).json({
-              msg: "User Added",
-              token: token,
-              user: {
-                id: user.id,
-                username: user.username,
-              },
-            });
-          });
+              res.status(200).json({
+                msg: "User Added",
+                token: token,
+                user: {
+                  id: user.id,
+                  username: user.username,
+                },
+              });
+            }
+          );
         }
       });
     }
