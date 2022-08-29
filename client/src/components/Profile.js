@@ -16,11 +16,7 @@ function Profile() {
       .catch((err) => console.log(err));
   }, []);
 
-  return (
-    <div>
-      I am <h3>{username}</h3>
-    </div>
-  );
+  return <div>I am {username}</div>;
 }
 
 export default Profile;
