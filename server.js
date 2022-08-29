@@ -8,10 +8,8 @@ app.use(require("cors")());
 app.use(express.json());
 
 const uri = config.get("ATLAS_URI");
-// console.log(uri);
 mongoose
-  // .connect(process.env.MONGODB_URI || uri, {
-  .connect(uri, {
+  .connect(process.env.MONGODB_URI || uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -25,15 +23,15 @@ mongoose
     process.exit(-1);
   });
 
-const QuestionsPageRoute = require("./routes/questionsRoute");
-const AnswerPageRoute = require("./routes/answersRoute");
+// const QuestionsPageRoute = require("./routes/questionsRoute");
+// const AnswerPageRoute = require("./routes/answersRoute");
 const SignupRoute = require("./routes/signupRoute");
 const LoginRoute = require("./routes/loginRoute");
 const UserRoute = require("./routes/userRoute");
 
-app.use("/api/questions", QuestionsPageRoute);
+// app.use("/api/questions", QuestionsPageRoute);
 
-app.use("/api/answer", AnswerPageRoute);
+// app.use("/api/answer", AnswerPageRoute);
 
 app.use("/api/signup", SignupRoute);
 
