@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import axios from "axios";
+import client from "../utils/client";
 
 function Profile() {
   const [username, setUsername] = useState("");
