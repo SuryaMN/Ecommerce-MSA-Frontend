@@ -8,8 +8,8 @@ function Profile() {
 
   const user_id = jwt_decode(localStorage.getItem("token")).id;
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/user/" + user_id)
+    client
+      .get("/user" + user_id)
       .then((name) => {
         setUsername(name.data);
       })

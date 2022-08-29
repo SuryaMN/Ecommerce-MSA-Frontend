@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import client from "../utils/client";
 
 function AddProduct() {
   const [product, setProduct] = useState({
@@ -12,7 +12,7 @@ function AddProduct() {
   function handleSubmit(event) {
     console.log("Submitted");
     event.preventDefault();
-    axios
+    client
       .post("http://localhost:8080/inventory", product)
       .then((result) => console.log(result.data))
       .catch((err) => console.log(err));

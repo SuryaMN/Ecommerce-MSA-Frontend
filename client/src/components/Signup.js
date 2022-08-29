@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import jwt_decode from "jwt-decode";
-import axios from "axios";
+import client from "../utils/client";
 
 function Signup() {
   const [user, setUser] = useState({
@@ -20,8 +20,8 @@ function Signup() {
 
   function postUser(event) {
     event.preventDefault();
-    axios
-      .post("http://localhost:5000/api/signup", user)
+    client
+      .post("/signup", user)
       .then((result) => {
         if (
           result.data.msg === "User already exists" ||

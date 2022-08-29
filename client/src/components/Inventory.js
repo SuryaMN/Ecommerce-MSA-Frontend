@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import client from "../utils/client";
 
 function Inventory() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios
+    client
       .get("http://localhost:8080/inventory")
       .then((result) => {
         setProducts(result.data);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import axios from "axios";
+import client from "../utils/client";
 
 function Login() {
   const [user, setUser] = useState({
@@ -21,8 +21,8 @@ function Login() {
 
   function postUser(event) {
     event.preventDefault();
-    axios
-      .post("http://localhost:5000/api/login", user)
+    client
+      .post("/login", user)
       .then((result) => {
         if (
           result.data.msg === "User Doesn't Exist" ||
