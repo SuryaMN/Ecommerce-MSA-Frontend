@@ -9,7 +9,7 @@ function Profile() {
   const user_id = jwt_decode(localStorage.getItem("token")).id;
   useEffect(() => {
     client
-      .get("/user" + user_id)
+      .get("/user/" + user_id)
       .then((name) => {
         setUsername(name.data);
       })
