@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+
 function Header() {
   return (
     <header id="header" className="header fixed-top d-flex align-items-center">
@@ -25,13 +27,13 @@ function Header() {
                 className="rounded-circle"
               />
               <span className="d-none d-md-block dropdown-toggle ps-2">
-                {localStorage.getItem("username")}
+                {jwt_decode(localStorage.getItem("token")).username}
               </span>
             </a>
 
             <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li className="dropdown-header">
-                <h6> {localStorage.getItem("username")}</h6>
+                <h6> {jwt_decode(localStorage.getItem("token")).username}</h6>
                 <span>Web Designer</span>
               </li>
               <li>
