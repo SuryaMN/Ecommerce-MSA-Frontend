@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import client from "../utils/client";
-
+import Sidebar from "./Sidebar";
+import Header from "./Header";
+import ProductCard from "./ProductCard";
 function Inventory() {
   const [products, setProducts] = useState([]);
 
@@ -15,17 +17,24 @@ function Inventory() {
 
   return (
     <div>
-      {products.map((product) => {
-        return (
-          <div key={product.id}>
-            <p>{product.id}</p>
-            <h3>{product.name}</h3>
-            <p>{product.price}</p>
-            <p>{product.rating}</p>
-            <p dangerouslySetInnerHTML={{ __html: product.description }}></p>
+      <Header />
+      <Sidebar />
+      <main id="main" className="main">
+        <div className="container-fluid">
+          <div className="row justify-content-around">
+            {products.map((product) => {
+              return (
+                <ProductCard
+                  key={product.id}
+                  name={product.name}
+                  price={product.price}
+                  description={product.description}
+                />
+              );
+            })}
           </div>
-        );
-      })}
+        </div>
+      </main>
     </div>
   );
 }
