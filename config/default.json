@@ -1,4 +1,4 @@
 {
-    "ATLAS_URI" : "mongodb+srv://suryamn:qwerty1234@cluster0.aepmhps.mongodb.net/?retryWrites=true&w=majority",
-    "jwtSecret":"jwt_stackoverflow"
+    "ATLAS_URI" : "mongodb+srv://suryamn:qwerty@1234@capstone.9nomawa.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret":"jwt_secret"
 }

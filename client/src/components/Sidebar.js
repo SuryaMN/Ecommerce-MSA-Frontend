@@ -19,9 +19,9 @@ function Sidebar() {
         </li>
 
         <li className="nav-item">
-          <a className="nav-link " href="tickets">
+          <a className="nav-link " href="addProduct">
             <i className="bi bi-stickies"></i>
-            <span>Tickets</span>
+            <span>Add Product</span>
           </a>
         </li>
       </ul>

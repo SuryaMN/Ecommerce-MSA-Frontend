@@ -41,26 +41,7 @@ function Signup() {
   }
 
   return (
-    // <div>
-    //   <form onSubmit={postUser}>
-    //     <h1>Signup</h1>
-    //     <input
-    //       type="text"
-    //       onChange={handleChange}
-    //       name="username"
-    //       placeholder="Username"
-    //       value={user.username}
-    //     />
-    //     <input
-    //       type="password"
-    //       onChange={handleChange}
-    //       name="password"
-    //       placeholder="Password"
-    //       value={user.password}
-    //     />
-    //     <input type="submit" name="" value="Sign Up" />
-    //   </form>
-    // </div>
+
 
     <div className="container">
       <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
