@@ -13,6 +13,7 @@ function Inventory() {
       }
     };
     client
+      // .get("http://localhost:8080/inventory",config)
       .get("https://api-gateway-capstone.herokuapp.com/inventory",config)
       .then((result) => {
         console.log(result.data);
@@ -34,7 +35,8 @@ function Inventory() {
             {products.map((product) => {
               return (
                 <ProductCard
-                  // key={product.id}
+                  key={product._id}
+                  id={product._id}
                   name={product.name}
                   price={product.price}
                   description={product.description}
