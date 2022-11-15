@@ -13,12 +13,15 @@ function Inventory() {
       }
     };
     client
-      .get("http://localhost:8080/inventory",config)
+      .get("https://api-gateway-capstone.herokuapp.com/inventory",config)
       .then((result) => {
         console.log(result.data);
-        setProducts(result.data);
+        setProducts(result.data); 
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        alert(err.response.data.message)
+
+      });
   }, []);
 
   return (

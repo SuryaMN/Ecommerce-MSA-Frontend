@@ -13,20 +13,33 @@ function AddProduct() {
   function handleSubmit(event) {
     console.log("Submitted");
     event.preventDefault();
-    // client
-    //   .post("http://localhost:8080/inventory", product)
-    //   .then((result) => console.log(result.data))
-    //   .catch((err) => console.log(err));
+    const config = {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    };
+    // axios
+    //   .post("https://xss-detection-ml-algo.herokuapp.com/", product)
+    //   .then((result) => {
+    //     if (result.data == "1") alert("This is a malicious script!!!");
+    //     else{
+
     axios
-      .post("https://xss-detection-ml-algo.herokuapp.com/", product)
+      .post(
+        "https://api-gateway-capstone.herokuapp.com/addProduct",
+        product,
+        config
+      )
       .then((result) => {
-        if (result.data == "1") alert("This is a malicious script!!!");
-        else alert("This is a safe text :)");
+        console.log(result.data);
+        window.location.href = "/inventory";
       })
       .catch((err) => console.log(err));
-
-    // window.location.href = "/inventory";
   }
+  // })
+  // .catch((err) => console.log(err));
+
+  // }
 
   function handleChange(event) {
     let { name, value } = event.target;
@@ -125,7 +138,6 @@ function AddProduct() {
                       </div>
 
                       <div className="row mb-3">
-                       
                         <div className="col-sm-10">
                           <button type="submit" className="btn btn-primary">
                             Submit Form
