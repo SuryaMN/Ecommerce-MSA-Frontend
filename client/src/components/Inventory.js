@@ -3,6 +3,7 @@ import client from "../utils/client";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import ProductCard from "./ProductCard";
+
 function Inventory() {
   const [products, setProducts] = useState([]);
 
@@ -16,7 +17,7 @@ function Inventory() {
       // .get("http://localhost:8080/inventory",config)
       .get("https://api-gateway-capstone.herokuapp.com/inventory",config)
       .then((result) => {
-        console.log(result.data);
+        // console.log(result.data);
         setProducts(result.data); 
       })
       .catch((err) => {
@@ -39,7 +40,7 @@ function Inventory() {
                   id={product._id}
                   name={product.name}
                   price={product.price}
-                  description={product.description}
+                  // description={product.description}
                 />
               );
             })}

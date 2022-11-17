@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Profile from "./components/Profile";
 import AddProduct from "./components/AddProduct";
+import ProductPage from "./components/ProductPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/addProduct" component={AddProduct} />
+        <Route exact path="/inventory/:id" component={ProductPage} />
       </Router>
     </div>
   );
