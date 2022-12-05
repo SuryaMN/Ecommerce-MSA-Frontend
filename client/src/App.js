@@ -7,6 +7,7 @@ import Logout from "./components/Logout";
 import Profile from "./components/Profile";
 import AddProduct from "./components/AddProduct";
 import ProductPage from "./components/ProductPage";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/addProduct" component={AddProduct} />
         <Route exact path="/inventory/:id" component={ProductPage} />
+        <Route exact path="/cart" component={Cart} />
       </Router>
     </div>
   );

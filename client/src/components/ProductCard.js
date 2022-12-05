@@ -1,10 +1,22 @@
+import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 
 
 function addToCart(id){
 
-  alert(id + " Added to cart");
+  let body = {
+    "user_id":localStorage.getItem("user_id"),
+    "product_id":id
+  }
+
+  axios.post("http://127.0.0.1:8002/addCart",body)
+  .then((result) => {
+    console.log(result.data);
+    alert(id + " added to cart");
+  })
+  .catch((err) => console.log(err))
+
 }
 
 function ProductCard(props) {

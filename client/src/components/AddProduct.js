@@ -11,6 +11,7 @@ function AddProduct() {
     price: "",
     seller: localStorage.getItem("username"),
     rating: 0,
+    reviews:{}
   });
 
   function handleSubmit(event) {
@@ -37,7 +38,7 @@ function AddProduct() {
     //     if (result.data == "1") alert("This is a malicious script!!!");
     //     else {
     axios
-      .post("http://127.0.0.1:8001/addProduct", product, config)
+      .post("https://api-gateway-1upk.onrender.com/addProduct", product, config)
       .then((result) => {
         console.log(result.data);
         window.location.href = "/inventory";

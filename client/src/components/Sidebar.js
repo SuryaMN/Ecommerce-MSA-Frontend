@@ -5,7 +5,7 @@ function Sidebar() {
     <aside id="sidebar" className="sidebar">
       <ul className="sidebar-nav" id="sidebar-nav">
         <li className="nav-item">
-          <a className="nav-link " href="home">
+          <a className="nav-link " href="/inventory">
             <i className="bi bi-house-door"></i>
             <span>Home</span>
           </a>
@@ -22,6 +22,13 @@ function Sidebar() {
           <a className="nav-link " href="addProduct">
             <i className="bi bi-stickies"></i>
             <span>Add Product</span>
+          </a>
+        </li>
+        
+        <li className="nav-item">
+          <a className="nav-link " href="cart">
+            <i className="bi bi-cart"></i>
+            <span>Cart</span>
           </a>
         </li>
       </ul>
