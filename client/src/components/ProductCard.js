@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 
 function addToCart(id){
 
+  
   let body = {
     "user_id":localStorage.getItem("user_id"),
     "product_id":id
   }
 
-  axios.post("http://127.0.0.1:8002/addCart",body)
+  axios.post("https://cart-service.onrender.com/addCart",body)
   .then((result) => {
     console.log(result.data);
     alert(id + " added to cart");
@@ -20,6 +21,7 @@ function addToCart(id){
 }
 
 function ProductCard(props) {
+
   return (
     <div className="card col-md-3">
       <img
@@ -37,9 +39,11 @@ function ProductCard(props) {
         <p className="card-text">
           <b>Price</b> : {props.price}
         </p>
-        <div className="d-flex justify-content-end">
+        { window.location.pathname == '/cart' ? 
+        null :
+        (<div className="d-flex justify-content-end">
          <i className="bi bi-cart btn btn-primary" onClick={() => addToCart(props.id)}></i> 
-        </div>
+        </div>) }
       </div>
     </div>
   );

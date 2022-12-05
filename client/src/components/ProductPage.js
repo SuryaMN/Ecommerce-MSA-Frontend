@@ -20,11 +20,10 @@ function ProductPage(props) {
     setProduct((prevValue) => {
       return {
         ...prevValue,
-        reviews: {...prevValue["reviews"], obj},
+        reviews: { ...prevValue["reviews"], obj },
       };
     });
   }
-
 
   function onChangeReview(event) {
     setReview(event.target.value);
@@ -35,23 +34,37 @@ function ProductPage(props) {
     setProduct((prevValue) => {
       return {
         ...prevValue,
-        reviews: {...prevValue["reviews"], obj},
+        reviews: { ...prevValue["reviews"], obj },
       };
     });
   }
 
   function onSubmit(event) {
-
-
     event.preventDefault();
     console.log(product);
     axios
-      .post("http://127.0.0.1:8001/addReview", product)
+      .post("https://inventory-service.onrender.com/addReview", product)
       .then((result) => {
         console.log(result.data);
       })
       .catch((err) => "Error : " + console.log(err));
+  }
 
+  function addToCart(id){
+
+  
+    let body = {
+      "user_id":localStorage.getItem("user_id"),
+      "product_id":id
+    }
+  
+    axios.post("https://cart-service.onrender.com/addCart",body)
+    .then((result) => {
+      console.log(result.data);
+      alert(id + " added to cart");
+    })
+    .catch((err) => console.log(err))
+  
   }
 
   useEffect(() => {
@@ -103,18 +116,15 @@ function ProductPage(props) {
                 <h4 className="price">
                   Current price: <span>{product.price}</span>
                 </h4>
-                <p className="vote">
-                  <strong>91%</strong> of buyers enjoyed this product!{" "}
-                  <strong>(87 votes)</strong>
-                </p>
 
                 <div className="action">
-                  <button className="btn btn-btn-primary" type="button">
-                    Add to cart
-                  </button>
-                  <button className="like btn btn-default" type="button">
-                    <span className="fa fa-heart"></span>
-                  </button>
+                  <div className="d-flex justify-content-end">
+                    <i
+                      className="bi bi-cart btn btn-primary"
+                      onClick={() => addToCart(product._id)}
+                    ></i>
+                  </div>
+
                   <ReactStars
                     value={rating}
                     count={5}
@@ -126,6 +136,14 @@ function ProductPage(props) {
                     activeColor="#ffd700"
                   />
                 </div>
+
+                  {/* {
+                    Object.keys(product['reviews']['obj']).map((keyName, keyIndex) => {
+                      return (<p>{product['reviews']['obj']}</p>)
+                    })
+                  } */}
+
+
                 <input type="text" onChange={onChangeReview}></input>
                 <button onClick={onSubmit}>Submit</button>
               </div>

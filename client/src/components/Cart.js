@@ -16,7 +16,7 @@ function Cart() {
     };
     axios
       // .get("https://inventory-service.onrender.com/getProducts",config)
-      .get("http://127.0.0.1:8002/getCart/"+localStorage.getItem("user_id"),config)
+      .get("https://cart-service.onrender.com/getCart/"+localStorage.getItem("user_id"),config)
       .then((result) => {
         console.log(result.data);
         setProducts(result.data); 
