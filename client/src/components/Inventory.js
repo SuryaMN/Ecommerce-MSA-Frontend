@@ -14,8 +14,8 @@ function Inventory() {
       }
     };
     client
-      // .get("http://localhost:8080/inventory",config)
-      .get("https://api-gateway-capstone.herokuapp.com/inventory",config)
+      // .get("https://inventory-service.onrender.com/getProducts",config)
+      .get("https://api-gateway-1upk.onrender.com/inventory",config)
       .then((result) => {
         // console.log(result.data);
         setProducts(result.data); 
@@ -40,6 +40,8 @@ function Inventory() {
                   id={product._id}
                   name={product.name}
                   price={product.price}
+                  image={product.image}
+                  seller={product.seller}
                   // description={product.description}
                 />
               );

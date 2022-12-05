@@ -15,7 +15,7 @@ function ProductPage(props) {
 
     axios
       .get(
-        "https://api-gateway-capstone.herokuapp.com/inventory/" +
+        "https://api-gateway-1upk.onrender.com/inventory/" +
           props.match.params.id,
         config
       )

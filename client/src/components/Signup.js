@@ -7,6 +7,8 @@ function Signup() {
   const [user, setUser] = useState({
     username: "",
     password: "",
+    email:"",
+    address:""
   });
 
   function handleChange(event) {
@@ -33,6 +35,8 @@ function Signup() {
           var userId = jwt_decode(result.data.token).id;
           // localStorage.setItem("user_id", userId);
           localStorage.setItem("token", result.data.token);
+          localStorage.setItem("user_id", result.data.user.id);
+          localStorage.setItem("username", result.data.user.username);
           console.log(result.data.msg);
           window.location.href = "/inventory";
         }
@@ -117,6 +121,37 @@ function Signup() {
                       />
                       <div className="invalid-feedback">
                         Please enter password
+                      </div>
+                    </div>
+                    
+                    <div className="col-12">
+                      <label htmlFor="yourEmail" className="form-label">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        className="form-control"
+                        id="yourEmail"
+                        onChange={handleChange}
+                        placeholder="Email"
+                        value={user.email}
+                        required
+                      />
+                      <div className="invalid-feedback">
+                        Please enter Email
+                      </div>
+                    </div>
+                    
+                    <div className="col-12">
+                      <label htmlFor="yourAddress" className="form-label">
+                        Address
+                      </label>
+
+                      <textarea id="yourAddress" placeholder="Address" onChange={handleChange} className="form-control" name="address" rows="4" cols="50" value={user.address} required></textarea>
+                      
+                      <div className="invalid-feedback">
+                        Please enter Address
                       </div>
                     </div>
 

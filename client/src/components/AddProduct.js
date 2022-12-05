@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import client from "../utils/client";
 import axios from "axios";
 
 function AddProduct() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const [product, setProduct] = useState({
     name: "",
     description: "",
     price: "",
-    // rating: "",
+    seller: localStorage.getItem("username"),
+    rating: 0,
   });
 
   function handleSubmit(event) {
@@ -18,28 +21,32 @@ function AddProduct() {
         Authorization: localStorage.getItem("token"),
       },
     };
+
+    // let formData = new FormData();
+
+    // formData.append("image",selectedImage);
+    // formData.append("name",product.name);
+    // formData.append("description",product.description);
+    // formData.append("price",product.price);
+    // formData.append("rating",product.rating);
+    // formData.append("seller",product.seller);
+
     // axios
-    //   .post("https://xss-detection-ml-algo.herokuapp.com/", product)
+    //   .post("https://xss-detection-ml-algo.onrender.com/", product)
     //   .then((result) => {
     //     if (result.data == "1") alert("This is a malicious script!!!");
-    //     else{
-
+    //     else {
     axios
-      .post(
-        "https://api-gateway-capstone.herokuapp.com/addProduct",
-        product,
-        config
-      )
+      .post("http://127.0.0.1:8001/addProduct", product, config)
       .then((result) => {
         console.log(result.data);
         window.location.href = "/inventory";
       })
       .catch((err) => console.log(err));
+    //       }
+    //     })
+    //     .catch((err) => console.log(err));
   }
-  // })
-  // .catch((err) => console.log(err));
-
-  // }
 
   function handleChange(event) {
     let { name, value } = event.target;
@@ -136,6 +143,35 @@ function AddProduct() {
                           />
                         </div>
                       </div>
+
+                      {selectedImage && (
+                        <div>
+                          <img
+                            alt="not fount"
+                            width={"250px"}
+                            src={URL.createObjectURL(selectedImage)}
+                          />
+                          <br />
+                          <button onClick={() => setSelectedImage(null)}>
+                            Remove
+                          </button>
+                        </div>
+                      )}
+
+                      <input
+                        type="file"
+                        name="myImage"
+                        onChange={(event) => {
+                          console.log(event.target.files[0]);
+                          setSelectedImage(event.target.files[0]);
+                          setProduct((prevValue) => {
+                            return {
+                              ...prevValue,
+                              image: event.target.files[0].name,
+                            };
+                          });
+                        }}
+                      />
 
                       <div className="row mb-3">
                         <div className="col-sm-10">

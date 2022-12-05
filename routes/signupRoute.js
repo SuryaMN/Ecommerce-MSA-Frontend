@@ -4,12 +4,16 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 
 router.post("/", (req, res) => {
+
   const user = new User({
     username: req.body.username,
     password: req.body.password,
+    email: req.body.email,
+    address: req.body.address,
   });
 
-  if (!req.body.username || !req.body.password) {
+
+  if (!req.body.username || !req.body.password || !req.body.email || !req.body.address ) {
     return res.status(200).json({ msg: "Enter all fields" });
   }
   //Checking for existing user
